@@ -10,3 +10,14 @@ def info_list(request):
      'municipios':list(municipios.values()),   
     }
     return JsonResponse(data)
+
+#obteniendo todos los datos de un municipio en especifico con ID.
+def municipio_detail(request, pk):
+    municipio = Info.objects.get(pk=pk)
+    data ={
+        'municipio': municipio.municipio,
+        'estado': municipio.estado,
+        'colonia': municipio.colonia,
+        'cp': municipio.cp
+    }
+    return JsonResponse(data)
